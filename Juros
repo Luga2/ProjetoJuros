@@ -1,0 +1,52 @@
+public class Produto {
+    private String nome;
+    private String descricao;
+    private double preco;
+    private String imagem;
+
+    // construtor da classe Produto
+    public Produto(String nome, String descricao, double preco, String imagem) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.imagem = imagem;
+    }
+
+    // getters para obter os atributos do produto
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+}
+
+public class Venda {
+    private static final double JUROS_4_5X = 0.0225;
+    private static final double JUROS_6_8X = 0.0285;
+    private static final double JUROS_9_10X = 0.0315;
+
+    // método que calcula o valor da parcela, considerando o número de parcelas escolhido pelo cliente e a taxa de juros apropriada
+    public static double calcularValorParcela(double valorTotal, int numParcelas) {
+        double valorParcela = valorTotal / numParcelas;
+
+        if (numParcelas <= 3) {
+            return valorParcela;
+        } else if (numParcelas <= 5) {
+            return valorParcela * (1 + JUROS_4_5X);
+        } else if (numParcelas <= 8) {
+            return valorParcela * (1 + JUROS_6_8X);
+        } else {
+            return valorParcela * (1 + JUROS_9_10X);
+        }
+    }
+}
